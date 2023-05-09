@@ -126,7 +126,7 @@ Compiled programs are faster than interpreted programs because they are translat
 
 The audience of the solution is the team of experts who are responsible for the blending process. They are the ones who will use the software to create the blending steps.
 
-The audience is any winery that uses Excel to calculate the blending steps because this is the most widely used software in the industry.
+The audience does not need to know any particular software.
 
 ## What is the problem
 
@@ -249,8 +249,7 @@ The project is supposed to be developed during 9 weeks, so the total cost of the
 ## Privacy
 
 The software will not be storing any data, so there is no privacy concern.
-
-<!-- It does not require an internet connexion and Excel can be used locally without internet though -->
+No internet connection is required to use the software.
 
 ## Non-functional requirements
 
@@ -262,7 +261,7 @@ The project is not supposed to be used by anyone outside of the company, so ther
 
 The software needs to be easy to use, we need to make sure that the user can understand how to use it even if not required.
 
-The software should adapt to the most common use cases, the client uses Excel so we need to make sure that the software is easy to use and that it is compatible with Excel.
+The software should adapt to the most common use cases, since the software should be used once per year, we need to focus more on the performance than the GUI or the UX.
 
 ### Maintainability
 
@@ -347,8 +346,6 @@ The software will not be dynamically updating the result if the data changes, th
 - **Champagne**: Champagne is a sparkling wine produced from grapes grown in the Champagne region of France following rules that demand, among other things, secondary fermentation of the wine in the bottle to create carbonation, specific vineyard practices, sourcing of grapes exclusively from specific parcels in the Champagne appellation and specific pressing regimes unique to the region. Some use the term Champagne as a generic term for sparkling wine, but in many countries, it is illegal to label any product Champagne unless it both comes from the Champagne region and is produced under the rules of the appellation.
 
 - **Tank**: A tank is a large container for holding liquids or gases.
-
-- **Excel**: Microsoft Excel is a spreadsheet program included in the Microsoft Office suite of applications. Spreadsheets present tables of values arranged in rows and columns that can be manipulated mathematically using both basic and complex arithmetic operations and functions.
 
 - **AOP**: An Appellation d'Origine Protégée is a geographical indication used to identify products that have a specific geographical origin and possess qualities or a reputation that are due to that origin. In the European Union, the use of the term AOP is legally protected and can only be used where the product meets the criteria laid down in the law.
 
