@@ -54,8 +54,8 @@
 
 ### Context 
 
-Krug Champagne will open a new winery. They want to fasten and renew the process of blending the wine.
-They want to create a software that will calculate the blending steps for them.
+Krug Champagne will open a new winery. They want to hasten and renew the process of blending the wine.
+They want to create software that will calculate the blending steps for them.
 We know that there are 300 tanks available, and we know that the blending can call for more than 400 wines in the process.
 
 ### Client
@@ -120,7 +120,7 @@ C++ is one of the fastest programming languages because it is compiled directly 
 
 ### Why compiled program?
 
-Compiled programs are faster than interpreted programs because they are translated into machine code before they are executed.This means that the program does not need to be translated each time it is executed, which saves time.
+Compiled programs are faster than interpreted programs because they are translated into machine code before they are executed. This means that the program does not need to be translated each time it is executed, which saves time.
 
 ## Audience
 
@@ -165,7 +165,7 @@ Bob is a wine consultant, he helps winemakers to create new wines and to improve
 
 Needs & goals: Bob wants to help winemakers to create new wines and to improve their existing wines, he wants to help them to create the best wine possible.
 
-Use case: Bob wants to fasten the process of creating new wines in one of his clients' wineries.
+Use case: Bob wants to hasten the process of creating new wines in one of his clients' wineries.
 ```
 
 ### Persona 3
@@ -226,7 +226,7 @@ The Software needs to be focused on :
 The software needs to be heavily documented, we need to make sure that anyone can understand how to use it.
 The clients are not supposed to have any real technical knowledge, so we need to make sure that the documentation is easy to understand.
 
-The customer is french, so the documentation needs to be in french.
+The customer is French, so the documentation needs to be in French.
 
 ### Testing
 
@@ -251,6 +251,8 @@ The project is supposed to be developed during 9 weeks, so the total cost of the
 The software will not be storing any data, so there is no privacy concern.
 No internet connection is required to use the software.
 
+The project does not require any internet connection and is just going to use local files.
+
 ## Non-functional requirements
 
 ### Security
@@ -266,6 +268,7 @@ The software should adapt to the most common use cases, since the software shoul
 ### Maintainability
 
 The software should not need to be adapted since the industry of wine is stable and does not change much.
+The software is supposed to be used once per year, there is little to no changes at all in the industry of wine.
 
 ### Scalability
 
@@ -276,7 +279,7 @@ The software needs to be able to handle large amounts of data easily and fast.
 The main risks are:
 
 - The software is not used by the clients because it is too complicated to use
-- The software is not used by the clients because it does not fasten the process
+- The software is not used by the clients because it does not hasten the process
 - The software misinterprets the data
 - The software is not well documented and is confusing for the user,
 - The software creates memory leaks and other memory-related issues during the execution of the program.
@@ -293,7 +296,6 @@ The software will be developed only on Mac OS M1, we will use version 11 of CPP
 | Technology | Version |
 | --- | --- |
 | CPP | 11 |
-| QT | 6.5 |
 | Bazel | pre-7.0.0 |
 | google test | 1.13.0 |
 
@@ -302,7 +304,7 @@ The software will be developed only on Mac OS M1, we will use version 11 of CPP
 Bazel is a build system that is used to build C++ projects. It is similar to CMake, but it is more modern and it is easier to use.
 It is the compiler used with the Google test.
 
-Bazel allow cross-platform compilation, so it is a good choice for this project since we want to support as many platforms as possible without having to change the code.
+Bazel allows cross-platform compilation, so it is a good choice for this project since we want to support as many platforms as possible without having to change the code.
 
 ### What is Google Test?
 
@@ -323,7 +325,7 @@ We aim to adapt to the client as much as possible.
 
 ## Out of scope
 
-The software will not support hardware older than Windows 7, we will not support older versions of CPP, and we will not support older versions of QT.
+The software will not support hardware older than Windows 7, we will not support older versions of CPP.
 
 If the process does not follow the documentation, no troubleshooting will be done by the software to try to tamper with the data to make it work.
 
@@ -332,8 +334,6 @@ The software will not be dynamically updating the result if the data changes, th
 ## Glossary
 
 - **CPP**: C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation. It is almost always implemented as a compiled language, and many vendors provide C++ compilers, including the Free Software Foundation, LLVM, Microsoft, Intel, Oracle, and IBM, so it is available on many platforms.
-
-- **QT**: Qt is a free and open-source widget toolkit for creating graphical user interfaces as well as cross-platform applications that run on various software and hardware platforms such as Linux, Windows, macOS, Android, or embedded systems with little or no change in the underlying codebase while still being a native application with native capabilities and speed.
 
 - **Bazel**: Bazel is a build system that is used to build C++ projects. It is similar to CMake, but it is more modern and it is easier to use.
 
@@ -349,4 +349,4 @@ The software will not be dynamically updating the result if the data changes, th
 
 - **AOP**: An Appellation d'Origine Protégée is a geographical indication used to identify products that have a specific geographical origin and possess qualities or a reputation that are due to that origin. In the European Union, the use of the term AOP is legally protected and can only be used where the product meets the criteria laid down in the law.
 
-- **TDD**: Test-driven development is a software development process relying on software requirements being converted to test cases before software is fully developed, and tracking all software development by repeatedly testing the software against all test cases. This is opposed to software being developed first and test cases created later.
+- **TDD**: Test-driven development is a software development process relying on software requirements being converted to test cases before software is fully developed, and tracking all software development by repeatedly testing the software against all test cases. This is opposed to software being developed first and test cases being created later.
