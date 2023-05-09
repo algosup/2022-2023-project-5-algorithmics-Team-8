@@ -52,10 +52,10 @@
 
 ## Overview
 
-### Context
+### Context 
 
-Krug Champagne will open a new winery. They want to hasten and renew the process of blending the wine.
-They want to create a software that will calculate the blending steps for them.
+Krug Champagne will open a new winery. They want to fasten and renew the process of blending the wine.
+They want to create software that will calculate the blending steps for them.
 We know that there are 300 tanks available, and we know that the blending can call for more than 400 wines in the process.
 
 ### Client
@@ -75,7 +75,7 @@ Krug Champagne is a French champagne house founded by Joseph Krug in 1843. It is
 - 1) Harvesting: The grapes used to make champagne are typically harvested in September or October. The most commonly used grape varieties are Pinot Noir, Pinot Meunier, and Chardonnay.
 
 - 2) Pressing: The grapes are pressed gently to extract the juice, which is then stored in tanks or barrels for fermentation.
-
+ 
 - 3) First Fermentation: The first fermentation takes place in stainless steel tanks or oak barrels. Yeast is added to the juice, which converts the sugar into alcohol. This process takes about two weeks, and it produces a still wine with low alcohol content.
 
 `________________________Project Scope_____________________________`
@@ -115,12 +115,12 @@ C++ is fast and efficient, and it provides a lot of control over the hardware, w
 
 C++ is supported by a large number of libraries, which makes it easy to write portable code. It is also supported by a large number of tools, including compilers, debuggers, and profilers.
 
-C++ is one of the fastest programming languages because it is compiled directly into machine code.
+C++ is one of the fastest programming languages because it is compiled directly into machine code. 
+
 
 ### Why compiled program?
 
-Compiled programs are faster than interpreted programs because they are translated into machine code before they are executed.This means that the program does not need to be translated each time it is executed, which saves time.
-The program is standalone without the need for a virtual machine or interpreter.
+Compiled programs are faster than interpreted programs because they are translated into machine code before they are executed. This means that the program does not need to be translated each time it is executed, which saves time.
 
 ## Audience
 
@@ -158,14 +158,14 @@ Use case: Mark just created his new formula and now wants to mass produce it, he
 Name: Bob Parker
 Age: 29
 Job: Wine Consultant
-Place: ChÃ¢lon-en-champagne, France
+Place: chalon-en-champagne, France
 
 Description:
 Bob is a wine consultant, he helps winemakers to create new wines and to improve their existing wines.
 
-Needs & goals: Bob wants to help winemakers to create new wines and to improve their existing wines, he wants to help them to create the best possible wine.
+Needs & goals: Bob wants to help winemakers to create new wines and to improve their existing wines, he wants to help them to create the best wine possible.
 
-Use case: Bob wants to hasten the process of creating new wines in one of his clients' wineries. 
+Use case: Bob wants to fasten the process of creating new wines in one of his clients' wineries.
 ```
 
 ### Persona 3
@@ -226,7 +226,7 @@ The Software needs to be focused on :
 The software needs to be heavily documented, we need to make sure that anyone can understand how to use it.
 The clients are not supposed to have any real technical knowledge, so we need to make sure that the documentation is easy to understand.
 
-The customer is french, so the documentation needs to be in french as well.
+The customer is French, so the documentation needs to be in French.
 
 ### Testing
 
@@ -257,8 +257,6 @@ No internet connection is required to use the software.
 
 The project is not supposed to be used by anyone outside of the company, so there is no security concern.
 
-The project does not require any internet connection, and is just going to use local files
-
 ### Usability
 
 The software needs to be easy to use, we need to make sure that the user can understand how to use it even if not required.
@@ -269,8 +267,6 @@ The software should adapt to the most common use cases, since the software shoul
 
 The software should not need to be adapted since the industry of wine is stable and does not change much.
 
-The software is supposed to be used once per year, there is little to no changes at all in the industry of wine.
-
 ### Scalability
 
 The software needs to be able to handle large amounts of data easily and fast.
@@ -280,7 +276,7 @@ The software needs to be able to handle large amounts of data easily and fast.
 The main risks are:
 
 - The software is not used by the clients because it is too complicated to use
-- The software is not used by the clients because it does not hasten the process
+- The software is not used by the clients because it does not fasten the process
 - The software misinterprets the data
 - The software is not well documented and is confusing for the user,
 - The software creates memory leaks and other memory-related issues during the execution of the program.
@@ -306,7 +302,7 @@ The software will be developed only on Mac OS M1, we will use version 11 of CPP
 Bazel is a build system that is used to build C++ projects. It is similar to CMake, but it is more modern and it is easier to use.
 It is the compiler used with the Google test.
 
-Bazel allow cross-platform compilation, so it is a good choice for this project since we want to support as many platforms as possible without having to change the code.
+Bazel allows cross-platform compilation, so it is a good choice for this project since we want to support as many platforms as possible without having to change the code.
 
 ### What is Google Test?
 
@@ -343,7 +339,7 @@ The software will not be dynamically updating the result if the data changes, th
 
 - **Google Test**: Google Test is a unit testing library for the C++ programming language, based on the xUnit architecture. The library is released under the BSD 3-clause license.
 
-- **LVMH**: LVMH MoÃ«t Hennessy Louis Vuitton SE, also known as LVMH, is a French multinational corporation and conglomerate specializing in luxury goods, headquartered in Paris, France. The company was formed in 1987 under the merger of fashion house Louis Vuitton with MoÃ«t Hennessy, a company formed after the 1971 merger between the champagne producer MoÃ«t & Chandon and Hennessy, the cognac manufacturer.
+- **LVMH**: LVMH Moët Hennessy Louis Vuitton SE, also known as LVMH, is a French multinational corporation and conglomerate specializing in luxury goods, headquartered in Paris, France. The company was formed in 1987 under the merger of fashion house Louis Vuitton with Moët Hennessy, a company formed after the 1971 merger between the champagne producer Moët & Chandon and Hennessy, the cognac manufacturer.
 
 - **Krug Champagne**: Krug Champagne is a French champagne house founded by Joseph Krug in 1843. It is based principally in Reims, the main city in France's Champagne region, and is one of the famous Champagne houses that formed part of the Grande Marques.
 
@@ -351,6 +347,6 @@ The software will not be dynamically updating the result if the data changes, th
 
 - **Tank**: A tank is a large container for holding liquids or gases.
 
-- **AOP**: An Appellation d'Origine ProtÃ©gÃ©e is a geographical indication used to identify products that have a specific geographical origin and possess qualities or a reputation that are due to that origin. In the European Union, the use of the term AOP is legally protected and can only be used where the product meets the criteria laid down in the law.
+- **AOP**: An Appellation d'Origine Protégée is a geographical indication used to identify products that have a specific geographical origin and possess qualities or a reputation that are due to that origin. In the European Union, the use of the term AOP is legally protected and can only be used where the product meets the criteria laid down in the law.
 
-- **TDD**: Test-driven development is a software development process relying on software requirements being converted to test cases before software is fully developed, and tracking all software development by repeatedly testing the software against all test cases. This is opposed to software being developed first and test cases created later.
+- **TDD**: Test-driven development is a software development process relying on software requirements being converted to test cases before software is fully developed, and tracking all software development by repeatedly testing the software against all test cases. This is opposed to software being developed first and test cases being created later.
