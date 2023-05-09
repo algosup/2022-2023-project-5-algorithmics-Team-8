@@ -55,7 +55,7 @@
 ### Context 
 
 Krug Champagne will open a new winery. They want to fasten and renew the process of blending the wine.
-They want to create a software that will calculate the blending steps for them.
+They want to create software that will calculate the blending steps for them.
 We know that there are 300 tanks available, and we know that the blending can call for more than 400 wines in the process.
 
 ### Client
@@ -120,7 +120,7 @@ C++ is one of the fastest programming languages because it is compiled directly 
 
 ### Why compiled program?
 
-Compiled programs are faster than interpreted programs because they are translated into machine code before they are executed.This means that the program does not need to be translated each time it is executed, which saves time.
+Compiled programs are faster than interpreted programs because they are translated into machine code before they are executed. This means that the program does not need to be translated each time it is executed, which saves time.
 
 ## Audience
 
@@ -226,7 +226,7 @@ The Software needs to be focused on :
 The software needs to be heavily documented, we need to make sure that anyone can understand how to use it.
 The clients are not supposed to have any real technical knowledge, so we need to make sure that the documentation is easy to understand.
 
-The customer is french, so the documentation needs to be in french.
+The customer is French, so the documentation needs to be in French.
 
 ### Testing
 
@@ -302,7 +302,7 @@ The software will be developed only on Mac OS M1, we will use version 11 of CPP
 Bazel is a build system that is used to build C++ projects. It is similar to CMake, but it is more modern and it is easier to use.
 It is the compiler used with the Google test.
 
-Bazel allow cross-platform compilation, so it is a good choice for this project since we want to support as many platforms as possible without having to change the code.
+Bazel allows cross-platform compilation, so it is a good choice for this project since we want to support as many platforms as possible without having to change the code.
 
 ### What is Google Test?
 
@@ -349,4 +349,4 @@ The software will not be dynamically updating the result if the data changes, th
 
 - **AOP**: An Appellation d'Origine Protégée is a geographical indication used to identify products that have a specific geographical origin and possess qualities or a reputation that are due to that origin. In the European Union, the use of the term AOP is legally protected and can only be used where the product meets the criteria laid down in the law.
 
-- **TDD**: Test-driven development is a software development process relying on software requirements being converted to test cases before software is fully developed, and tracking all software development by repeatedly testing the software against all test cases. This is opposed to software being developed first and test cases created later.
+- **TDD**: Test-driven development is a software development process relying on software requirements being converted to test cases before software is fully developed, and tracking all software development by repeatedly testing the software against all test cases. This is opposed to software being developed first and test cases being created later.
