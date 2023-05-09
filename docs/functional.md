@@ -54,7 +54,7 @@
 
 ### Context 
 
-Krug Champagne will open a new winery. They want to fasten and renew the process of blending the wine.
+Krug Champagne will open a new winery. They want to hasten and renew the process of blending the wine.
 They want to create software that will calculate the blending steps for them.
 We know that there are 300 tanks available, and we know that the blending can call for more than 400 wines in the process.
 
@@ -165,7 +165,7 @@ Bob is a wine consultant, he helps winemakers to create new wines and to improve
 
 Needs & goals: Bob wants to help winemakers to create new wines and to improve their existing wines, he wants to help them to create the best wine possible.
 
-Use case: Bob wants to fasten the process of creating new wines in one of his clients' wineries.
+Use case: Bob wants to hasten the process of creating new wines in one of his clients' wineries.
 ```
 
 ### Persona 3
@@ -251,6 +251,8 @@ The project is supposed to be developed during 9 weeks, so the total cost of the
 The software will not be storing any data, so there is no privacy concern.
 No internet connection is required to use the software.
 
+The project does not require any internet connection and is just going to use local files.
+
 ## Non-functional requirements
 
 ### Security
@@ -266,6 +268,7 @@ The software should adapt to the most common use cases, since the software shoul
 ### Maintainability
 
 The software should not need to be adapted since the industry of wine is stable and does not change much.
+The software is supposed to be used once per year, there is little to no changes at all in the industry of wine.
 
 ### Scalability
 
@@ -276,7 +279,7 @@ The software needs to be able to handle large amounts of data easily and fast.
 The main risks are:
 
 - The software is not used by the clients because it is too complicated to use
-- The software is not used by the clients because it does not fasten the process
+- The software is not used by the clients because it does not hasten the process
 - The software misinterprets the data
 - The software is not well documented and is confusing for the user,
 - The software creates memory leaks and other memory-related issues during the execution of the program.
