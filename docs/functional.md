@@ -296,7 +296,6 @@ The software will be developed only on Mac OS M1, we will use version 11 of CPP
 | Technology | Version |
 | --- | --- |
 | CPP | 11 |
-| QT | 6.5 |
 | Bazel | pre-7.0.0 |
 | google test | 1.13.0 |
 
@@ -326,7 +325,7 @@ We aim to adapt to the client as much as possible.
 
 ## Out of scope
 
-The software will not support hardware older than Windows 7, we will not support older versions of CPP, and we will not support older versions of QT.
+The software will not support hardware older than Windows 7, we will not support older versions of CPP.
 
 If the process does not follow the documentation, no troubleshooting will be done by the software to try to tamper with the data to make it work.
 
@@ -335,8 +334,6 @@ The software will not be dynamically updating the result if the data changes, th
 ## Glossary
 
 - **CPP**: C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation. It is almost always implemented as a compiled language, and many vendors provide C++ compilers, including the Free Software Foundation, LLVM, Microsoft, Intel, Oracle, and IBM, so it is available on many platforms.
-
-- **QT**: Qt is a free and open-source widget toolkit for creating graphical user interfaces as well as cross-platform applications that run on various software and hardware platforms such as Linux, Windows, macOS, Android, or embedded systems with little or no change in the underlying codebase while still being a native application with native capabilities and speed.
 
 - **Bazel**: Bazel is a build system that is used to build C++ projects. It is similar to CMake, but it is more modern and it is easier to use.
 
