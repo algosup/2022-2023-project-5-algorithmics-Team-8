@@ -42,7 +42,7 @@ On top of that, we will be using the [Bug Report Template](Bug%20Report%20Templa
 Click to expand
 </summary>
 
-- [Test Plan SpaceForm](#test-plan-spaceform)
+- [Test Plan ---](#test-plan----)
   - [Test report template](#test-report-template)
     - [Severity level](#severity-level)
   - [Table of Contents](#table-of-contents)
@@ -50,7 +50,7 @@ Click to expand
     - [Portability](#portability)
     - [Software Health](#software-health)
     - [Accuracy](#accuracy)
-    - [Execution Time](#execution-time)
+    - [Execution time](#execution-time)
     - [Input Table](#input-table)
     - [Data Processing](#data-processing)
     - [Main Algorithmic Loop](#main-algorithmic-loop)
