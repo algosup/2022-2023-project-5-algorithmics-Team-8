@@ -94,3 +94,27 @@ The game fully runs on Windows and Mac os machines; however, we only tried to ru
 - [ ] The Software should execute as fast as possible
 
 Further information on execution time depending on platform and given inputs will be provided in the Test
+
+### Input Table 
+
+- [ ] The Software should be able to read a csv file given as input
+
+### Data Processing
+
+- [ ] The Software should be able to handle the resulting data read on the csv file
+    - [ ] The Barrels should be listed with their ID, capacity, and the presence of wine if there is inside
+    - [ ] The wines should be listed with their ID, and the tank they are in
+    - [ ] The formula should be available with each composing wine and it's part of the final volume, either in quantity or percentage
+    - [ ] If given, the final tanks or result quantity should be available
+
+### Main Algorithmic Loop
+
+- [ ] TODO
+
+### Instructions Generation
+
+- [ ] TODO
+
+### Output Table
+
+- [ ] TODO
