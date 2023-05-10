@@ -1,5 +1,5 @@
 /bazel-*
-
+*bazel-*
 /.ijwb/
 /.aswb/
 /.clwb/
