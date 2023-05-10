@@ -273,7 +273,7 @@ The software will be a console application, so it will not have any GUI.
 ### Maintainability
 
 The software should not need to be adapted since the industry of wine is stable and does not change much.
-The software is supposed to be used once per year, there is little to no changes at all in the industry of wine.
+The software is supposed to be used once per year, there are little to no changes at all in the industry of wine.
 
 ### Scalability
 
