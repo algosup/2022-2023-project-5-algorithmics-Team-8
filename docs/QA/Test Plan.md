@@ -51,7 +51,7 @@ Click to expand
     - [Software Health](#software-health)
     - [Accuracy](#accuracy)
     - [Execution time](#execution-time)
-    - [Input Table](#input-table)
+    - [Input Handling](#input-handling)
     - [Data Processing](#data-processing)
     - [Main Algorithmic Loop](#main-algorithmic-loop)
     - [Instructions Generation](#instructions-generation)
@@ -95,17 +95,20 @@ The game fully runs on Windows and Mac os machines; however, we only tried to ru
 
 Further information on execution time depending on platform and given inputs will be provided in the Test
 
-### Input Table 
+### Input Handling
 
-- [ ] The Software should be able to read a csv file given as input
+- [ ] The Software should be able to read a config file given as input
+    - [ ] The Software should read the file that was dragged on the executable
+    - [ ] The Software should read the at the filepath given when started from a terminal
+    - [ ] The Software should read the at the default filepath when no inputs are given
 
 ### Data Processing
 
-- [ ] The Software should be able to handle the resulting data read on the csv file
+- [ ] The Software should be able to handle the resulting data read on the config file
     - [ ] The Barrels should be listed with their ID, capacity, and the presence of wine if there is inside
-    - [ ] The wines should be listed with their ID, and the tank they are in
     - [ ] The formula should be available with each composing wine and it's part of the final volume, either in quantity or percentage
-    - [ ] If given, the final tanks or result quantity should be available
+    - [ ] The final tanks or result quantity should be available
+    - [ ] Commented out lines should be properly ignored by the Software
 
 ### Main Algorithmic Loop
 
