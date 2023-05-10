@@ -31,14 +31,16 @@ For the time being, we do not know how many .cpp and .h files we will have, for 
 │  │  ├── Installation.md
 │  │  ├── User Guide.md
 │  │  └── User Guide.pdf
-| ├── QA
-│  │  ├── Test Plan.md
-│  │  └── Test Report.md
-| ├── Research
-│  │  ├── 0.Project Research.md
-│  │  ├── 1.Client.md
-│  │  └── 1.Product.md
-│  └── README.md
+├── Mockups
+│  ├── Input.md
+│  └── Output.md
+├── QA
+│  ├── Test Plan.md
+│  └── Test Report.md
+├── Research
+│  ├── 0.Project Research.md
+│  ├── 1.Client.md
+│  └── 1.Product.md
 ├── src
 │  ├── Include
 │  │  ├── BUILD
@@ -53,7 +55,8 @@ For the time being, we do not know how many .cpp and .h files we will have, for 
 ├── WORKSPACE
 ├── DOCKERBUILD
 ├── .dockerignore 
-└── sebastien.config
+├── sebastien.config
+└── README.md
 ```
 
 ## Description
@@ -67,6 +70,10 @@ We will put files used to manage DOCKER, Bazel, git, etc.
 ### docs
 
 This folder contains all the documentation of the project such as the specifications, management, user guide, etc.
+
+### Mockups
+
+This folder contains the mockups of the input and output of the program, it will be used to communicate with the client and present them how the program will work.
 
 ### src
 
