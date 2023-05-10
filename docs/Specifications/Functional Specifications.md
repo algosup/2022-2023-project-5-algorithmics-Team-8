@@ -302,8 +302,8 @@ It is a console application so any editor will work.
 | Technology | Version |
 | --- | --- |
 | CPP | 11 |
-| Bazel | pre-7.0.0 |
-| google test | 1.13.0 |
+| Bazel | 6.11 |
+| google test | 1.12.0 |
 
 ### What is Bazel?
 
