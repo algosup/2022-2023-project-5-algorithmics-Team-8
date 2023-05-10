@@ -263,9 +263,12 @@ The project is not supposed to be used by anyone outside of the company, so ther
 
 ### Usability
 
+
 The software needs to be easy to use, we need to make sure that the user can understand how to use it even if not required.
 
 The software should adapt to the most common use cases, since the software should be used once per year, we need to focus more on the performance than the GUI or the UX.
+
+The software will be a console application, so it will not have any GUI.
 
 ### Maintainability
 
@@ -293,7 +296,8 @@ To prevent this from happening, we need to make sure that the software is well d
 
 ### Development environment
 
-The software will be developed only on Mac OS M1, we will use version 11 of CPP
+The software will be developed only on Mac OS M1, we will use version 11 of CPP.
+It is a console application so any editor will work.
 
 | Technology | Version |
 | --- | --- |
