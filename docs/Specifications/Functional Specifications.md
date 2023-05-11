@@ -100,6 +100,8 @@ The blending process is a very important step in the production of champagne. It
 
 They then need to reproduce the same blend on a large scale, which is a very difficult task because the process is lossy and the wine is not always the same when done by hand.
 
+A good algorithm will get the final champagne closer to the real recipe. It will end up tasting better and being more consistent.
+
 ### Hardware minimum
 
 Windows
@@ -121,6 +123,9 @@ C++ is one of the fastest programming languages because it is compiled directly 
 ### Why compiled program?
 
 Compiled programs are faster than interpreted programs because they are translated into machine code before they are executed. This means that the program does not need to be translated each time it is executed, which saves time.
+
+With a compiled program, the client does not need to have the source code, which means that the client does not need to have a compiler installed on their computer.
+
 
 ## Audience
 
@@ -158,7 +163,7 @@ Use case: Mark just created his new formula and now wants to mass produce it, he
 Name: Bob Parker
 Age: 29
 Job: Wine Consultant
-Place: chalon-en-champagne, France
+Place: Châlons-en-Champagne, France 
 
 Description:
 Bob is a wine consultant, he helps winemakers to create new wines and to improve their existing wines.
@@ -188,6 +193,8 @@ Use case: Lara has created 5 new wines and wants to mass-produce them.
 
 There are no laws or regulations that apply to this project.
 
+AOP which is the main problem of the champagne industry is not a problem for the software since the software does not impact the source of the wine.
+
 ## Ressources
 
 Since the champagne industry is in France because of the [AOP](https://en.wikipedia.org/wiki/Appellation_d%27origine_prot%C3%A9g%C3%A9e), most of our resources are in French.
@@ -210,7 +217,7 @@ The Software needs to be focused on :
 
 ### Must have
 
-- A documentation explaining how to use the software.
+- A Documentation explaining how to use the software.
 - A config file example ready to be filled
 - The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine.
 - The software needs to be able to calculate the blending steps.
@@ -261,6 +268,8 @@ The project does not require any internet connection and is just going to use lo
 
 The project is not supposed to be used by anyone outside of the company, so there is no security concern.
 
+We only access the files prepared for the use of the software, so there is no security concern about taking data from the disk.
+
 ### Usability
 
 
@@ -269,6 +278,8 @@ The software needs to be easy to use, we need to make sure that the user can und
 The software should adapt to the most common use cases, since the software should be used once per year, we need to focus more on the performance than the GUI or the UX.
 
 The software will be a console application, so it will not have any GUI.
+
+It might be time-consuming to use the software if the input is not already made, but it is not a problem since the software is only supposed to be used once per year.
 
 ### Maintainability
 
@@ -304,6 +315,8 @@ It is a console application so any editor will work.
 | CPP | 11 |
 | Bazel | 6.11 |
 | google test | 1.12.0 |
+
+We try to use the longest LTS possible to make sure that the software is not outdated.
 
 ### What is Bazel?
 
@@ -345,7 +358,7 @@ The software will not be dynamically updating the result if the data changes, th
 
 - **Google Test**: Google Test is a unit testing library for the C++ programming language, based on the xUnit architecture. The library is released under the BSD 3-clause license.
 
-- **LVMH**: LVMH Moët Hennessy Louis Vuitton SE, also known as LVMH, is a French multinational corporation and conglomerate specializing in luxury goods, headquartered in Paris, France. The company was formed in 1987 under the merger of fashion house Louis Vuitton with Moët Hennessy, a company formed after the 1971 merger between the champagne producer Moët & Chandon and Hennessy, the cognac manufacturer.
+- **LVMH**: LVMH MoÃ«t Hennessy Louis Vuitton SE, also known as LVMH, is a French multinational corporation and conglomerate specializing in luxury goods, headquartered in Paris, France. The company was formed in 1987 under the merger of fashion house Louis Vuitton with MoÃ«t Hennessy, a company formed after the 1971 merger between the champagne producer MoÃ«t & Chandon and Hennessy, the cognac manufacturer.
 
 - **Krug Champagne**: Krug Champagne is a French champagne house founded by Joseph Krug in 1843. It is based principally in Reims, the main city in France's Champagne region, and is one of the famous Champagne houses that formed part of the Grande Marques.
 
@@ -353,6 +366,12 @@ The software will not be dynamically updating the result if the data changes, th
 
 - **Tank**: A tank is a large container for holding liquids or gases.
 
-- **AOP**: An Appellation d'Origine Protégée is a geographical indication used to identify products that have a specific geographical origin and possess qualities or a reputation that are due to that origin. In the European Union, the use of the term AOP is legally protected and can only be used where the product meets the criteria laid down in the law.
+- **AOP**: An Appellation d'Origine ProtÃ©gÃ©e is a geographical indication used to identify products that have a specific geographical origin and possess qualities or a reputation that are due to that origin. In the European Union, the use of the term AOP is legally protected and can only be used where the product meets the criteria laid down in the law.
 
 - **TDD**: Test-driven development is a software development process relying on software requirements being converted to test cases before software is fully developed, and tracking all software development by repeatedly testing the software against all test cases. This is opposed to software being developed first and test cases being created later.
+
+- **GUI**: A graphical user interface is a type of user interface that allows users to interact with electronic devices through graphical icons and audio indicators such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
+
+- **machine code**: Machine code is a computer program written in machine language instructions that can be executed directly by a computer's central processing unit (CPU). Each instruction causes the CPU to perform a very specific task, such as a load, a store, a jump, or an arithmetic logic unit (ALU) operation on one or more units of data in the CPU's registers or memory.
+
+- **LTS**: Long-term support is a product lifecycle management policy in which a stable release of computer software is maintained for a longer period of time than the standard edition. The term is usually reserved for desktop operating systems, such as Windows, macOS, and Linux. LTS is typically marketed to businesses as well as educational and scientific institutions that rely heavily on stable systems and software.
