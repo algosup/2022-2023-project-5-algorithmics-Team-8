@@ -28,6 +28,7 @@
   - [Requirements](#requirements)
   - [Functionalities](#functionalities)
     - [Must have](#must-have)
+    - [Out of scope](#out-of-scope)
     - [Compatibility](#compatibility)
     - [Documentation](#documentation)
     - [Testing](#testing)
@@ -45,14 +46,14 @@
     - [What is Google Test?](#what-is-google-test)
     - [CPP Evolution](#cpp-evolution)
   - [Success criteria](#success-criteria)
-  - [Out of scope](#out-of-scope)
+  - [Out of scope](#out-of-scope-1)
   - [Glossary](#glossary)
 
 </details>
 
 ## Overview
 
-### Context 
+### Context
 
 Krug Champagne will open a new winery. They want to hasten and renew the process of blending the wine.
 They want to create software that will calculate the blending steps for them.
@@ -75,7 +76,7 @@ Krug Champagne is a French champagne house founded by Joseph Krug in 1843. It is
 - 1) Harvesting: The grapes used to make champagne are typically harvested in September or October. The most commonly used grape varieties are Pinot Noir, Pinot Meunier, and Chardonnay.
 
 - 2) Pressing: The grapes are pressed gently to extract the juice, which is then stored in tanks or barrels for fermentation.
- 
+
 - 3) First Fermentation: The first fermentation takes place in stainless steel tanks or oak barrels. Yeast is added to the juice, which converts the sugar into alcohol. This process takes about two weeks, and it produces a still wine with low alcohol content.
 
 `________________________Project Scope_____________________________`
@@ -117,15 +118,13 @@ C++ is fast and efficient, and it provides a lot of control over the hardware, w
 
 C++ is supported by a large number of libraries, which makes it easy to write portable code. It is also supported by a large number of tools, including compilers, debuggers, and profilers.
 
-C++ is one of the fastest programming languages because it is compiled directly into machine code. 
-
+C++ is one of the fastest programming languages because it is compiled directly into machine code.
 
 ### Why compiled program?
 
 Compiled programs are faster than interpreted programs because they are translated into machine code before they are executed. This means that the program does not need to be translated each time it is executed, which saves time.
 
 With a compiled program, the client does not need to have the source code, which means that the client does not need to have a compiler installed on their computer.
-
 
 ## Audience
 
@@ -222,6 +221,14 @@ The Software needs to be focused on :
 - The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine.
 - The software needs to be able to calculate the blending steps.
 - The software needs to be able to output a file containing the blending steps.
+- Development API oriented 
+
+### Out of scope
+
+- There will be Graphical User Interface (GUI) will be provided, and the software will be a console application.
+- The software will not be dynamically updating the result if the data changes, the user will have to re-run the software to get the new result.
+- The software will not be able to intake any other file formatting other than the one provided.
+- The software will not support hardware older than Windows 7, we will not support older versions of CPP.
 
 ### Compatibility
 
@@ -271,7 +278,6 @@ The project is not supposed to be used by anyone outside of the company, so ther
 We only access the files prepared for the use of the software, so there is no security concern about taking data from the disk.
 
 ### Usability
-
 
 The software needs to be easy to use, we need to make sure that the user can understand how to use it even if not required.
 
