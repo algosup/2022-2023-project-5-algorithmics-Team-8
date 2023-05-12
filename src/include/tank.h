@@ -2,12 +2,11 @@
 #include <map>
 #include <string>
 
-using namespace std;
 
 struct Tank
 {
   double capacity;
-  map<std::string,double> formula;
+  std::map<std::string,double> formula;
 
 
   Tank(double size, std::string content)
