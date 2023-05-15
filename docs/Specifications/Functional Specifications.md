@@ -209,7 +209,7 @@ The Software needs to be focused on :
 - minimizing the number of tanks used
 - minimizing the number of transfers between tanks
 - The closest result to the target blend
-- The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine.
+- The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine and the choosen number of hectoliters to produce.
 - The software needs to be able to output a file containing the blending steps.
 
 ## Functionalities
@@ -218,7 +218,7 @@ The Software needs to be focused on :
 
 - A Documentation explaining how to use the software.
 - A config file example ready to be filled
-- The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine.
+- The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine and the choosen number of hectoliters to produce.
 - The software needs to be able to calculate the blending steps.
 - The software needs to be able to output a file containing the blending steps.
 - Development API oriented 
