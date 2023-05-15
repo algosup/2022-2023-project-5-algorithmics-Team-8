@@ -209,7 +209,7 @@ The Software needs to be focused on :
 - minimizing the number of tanks used
 - minimizing the number of transfers between tanks
 - The closest result to the target blend
-- The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine and the choosen number of hectoliters to produce.
+- The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine and the chosen number of hectoliters to produce.
 - The software needs to be able to output a file containing the blending steps.
 
 ## Functionalities
@@ -218,7 +218,7 @@ The Software needs to be focused on :
 
 - A Documentation explaining how to use the software.
 - A config file example ready to be filled
-- The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine and the choosen number of hectoliters to produce.
+- The software needs to be able to intake config files containing the data of the wine, tank sizes, and the percentage to take from each type of wine and the chosen number of hectoliters to produce.
 - The software needs to be able to calculate the blending steps.
 - The software needs to be able to output a file containing the blending steps.
 - Development API oriented 
@@ -376,8 +376,8 @@ The software will not be dynamically updating the result if the data changes, th
 
 - **TDD**: Test-driven development is a software development process relying on software requirements being converted to test cases before software is fully developed, and tracking all software development by repeatedly testing the software against all test cases. This is opposed to software being developed first and test cases being created later.
 
-- **GUI**: A graphical user interface is a type of user interface that allows users to interact with electronic devices through graphical icons and audio indicators such as primary notation, instead of text-based user interfaces, typed command labels or text navigation.
+- **GUI**: A graphical user interface is a type of user interface that allows users to interact with electronic devices through graphical icons and audio indicators such as primary notation, instead of text-based user interfaces, typed command labels, or text navigation.
 
 - **machine code**: Machine code is a computer program written in machine language instructions that can be executed directly by a computer's central processing unit (CPU). Each instruction causes the CPU to perform a very specific task, such as a load, a store, a jump, or an arithmetic logic unit (ALU) operation on one or more units of data in the CPU's registers or memory.
 
-- **LTS**: Long-term support is a product lifecycle management policy in which a stable release of computer software is maintained for a longer period of time than the standard edition. The term is usually reserved for desktop operating systems, such as Windows, macOS, and Linux. LTS is typically marketed to businesses as well as educational and scientific institutions that rely heavily on stable systems and software.
+- **LTS**: Long-term support is a product lifecycle management policy in which a stable release of computer software is maintained for a longer period than the standard edition. The term is usually reserved for desktop operating systems, such as Windows, macOS, and Linux. LTS is typically marketed to businesses as well as educational and scientific institutions that rely heavily on stable systems and software.
