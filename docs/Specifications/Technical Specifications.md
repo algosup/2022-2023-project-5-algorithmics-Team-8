@@ -5,7 +5,7 @@
 # <div align="center">Technical Specifications</div>
 
 <div align="right">Created on: 05/05/2023</div>
-<div align="right">Last updated on: 15/05/2023</div>
+<div align="right">Last updated on: 23/05/2023</div>
 
 <details>
 <summary>Table of Content</summary>
@@ -17,10 +17,27 @@
     - [Developpement Environment](#developement-environment)
     - [Out Of Scope](#out-of-scope)
 - [Solutions](#solutions)
+	- [Bazel](#bazel)
+	- [Design](#design-work-in-progress)
+	- [Test Plan](#test-plan)
+	- [Release and Deployement Plan](#release-and-deployment-plan)
+	- [Alternate Design](#alternate-design)
 - [Further Considerations](#further-considerations)
+	- [Cost Analysis](#cost-analysis)
+	- [Security Considerations](#security-considerations)
+	- [Privacy Considerations](#privacy-considerations)
+	- [Accessibility Considerations](#accessiblity-considerations)
+	- [Operational Considerations](#operational-considerations)
+	- [Risks](#risks)
 - [Success Evaluation](#success-eveluation)
 - [Work](#work)
+	- [Work Estimate And Timelines](#work-estimates-and-timelines)
+	- [Prioritization](#prioritization)
+	- [Milestones](#milestones)
 - [End Matter](#end-matter)
+	- [References](#references)
+	- [Acknoledgements](#acknowledgments)
+	- [Glossary](#glossary)
 
 </details>
 
@@ -47,7 +64,7 @@ The software will run on the following minimum configuration:
 |**RAM**    | 2 Go          |
 |**MEMORY** | 10 Mo         |
 
-This configuration is subject to change in the future depending on the development process.
+This configuration is subject to change depending on the development process.
 
 ### *Developement Environment*
 
@@ -56,8 +73,8 @@ The software will be developped on MAC OS with M1 chips, using the following tec
 | Technology  |  Version   |
 |-------------|------------|
 | CPP         |  11        |
-| Bazel       |  pre-7.0.0 |
-| google test |  1.13.0    |
+| Bazel       |  6.2.0	   |
+| google test |  1.12.0    |
 
 This configuration is subject to changes if issues were to arise.
 
@@ -70,6 +87,31 @@ In the specific case where the input or process does not follow the documentatio
 The result won't be dynamically updated when the input will change, The user will have to run the software again.
 
 ## **Solutions**
+
+### Bazel
+
+For this project we will use Bazel to compile build and test the code (paired with google test).
+
+To setup Bazel on MacOS:
+1. Install Homebrew
+
+>```/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"```
+
+2. Install Bazel via Homebrew
+
+>```brew install bazel```
+
+3. You can verify the installation using the following command
+
+>```bazel --version```
+
+4. To update Bazel, use the folling command
+
+>```brew upgrade bazel```
+
+If those steps don't work on your machine you can follow the another method of installation described on [Bazel's official website](https://bazel.build/install/os-x) in the install/os-x section.
+
+To learn how to use Bazel with c++, you can follow this [tutorial](https://bazel.build/start/cpp) on the official website.
 
 ### *Design* [```Work in Progress```]
 
@@ -249,6 +291,7 @@ To go further:
 
 - [Functional Specification](/Documents/functional.md)
 - [Test plan](/Documents/test_plan.md)
+- [Bazel](https://bazel.build/)
 
 `To define`
 
