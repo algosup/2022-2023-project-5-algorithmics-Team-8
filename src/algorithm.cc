@@ -7,90 +7,88 @@
 #include <map>
 #include <iomanip>
 #include <cmath>
+#include "include/tank.h"
 #include "include/algorithm.h"
 
-using namespace std;
 
-void Find_Tank(float amount)
+void Find_Tank(double amount)
 {
-    for (int i = 0; i < tanks.size(); i++)
+  for (int i = 0; i < tanks.size(); i++)
+  {
+    if (tanks[i].capacity == amount)
     {
-        if (tanks[i].quantity_left == amount)
-        {
-            tanks[i].is_solved = true;
-            return;
-        }
+      tanks[i].formula["/"] = 100;
+      return;
     }
+  }
 }
 
-vector<Formula> Split_Formula(Formula F)
+std::vector<Formula> Split_Formula(Formula F)
 {
-    vector<Formula> formulas;
-    for (int i = 0; i < F.inputs.size(); i++)
-    {
-        Formula f;
-        f.name = F.inputs[i];
-        f.quantity = F.inputs_quantity[i];
-        f.output_quantity = F.output_quantity;
-        f.output = F.output;
-        f.is_solved = false;
-        formulas.push_back(f);
-    }
-    return formulas;
+  std::vector<Formula> formulas;
+  for (int i = 0; i < F.inputs.size(); i++)
+  {
+    Formula f;
+    f.name = F.inputs[i];
+    f.quantity = F.inputs_quantity[i];
+    f.output_quantity = F.output_quantity;
+    f.output = F.output;
+    f.is_solved = false;
+    formulas.push_back(f);
+  }
+  return formulas;
 }
 
-void Solve(Formula F, float a)
+void Solve(Formula F, double a)
 {
-    Find_Tank(a);
-    vector<Formula> formulas = Split_Formula(F);
-    for (int i = 0; i < formulas.size(); i++)
-    {
-        Solve(formulas[i], formulas[i].quantity);
-    }
+  Find_Tank(a);
+  std::vector<Formula> formulas = Split_Formula(F);
+  for (int i = 0; i < formulas.size(); i++)
+  {
+    Solve(formulas[i], formulas[i].quantity);
+  }
 }
 
 int main()
 {
-    int n;
-    cin >> n;
-    for (int i = 0; i < n; i++)
+  int n;
+  std::cin >> n;
+  for (int i = 0; i < n; i++)
+  {
+    Formula f;
+    std::cin >> f.name;
+    std::cin >> f.quantity;
+    int m;
+    std::cin >> m;
+    for (int j = 0; j < m; j++)
     {
-        Formula f;
-        cin >> f.name;
-        cin >> f.quantity;
-        int m;
-        cin >> m;
-        for (int j = 0; j < m; j++)
-        {
-            string input;
-            float input_quantity;
-            cin >> input;
-            cin >> input_quantity;
-            f.inputs.push_back(input);
-            f.inputs_quantity.push_back(input_quantity);
-        }
-        cin >> f.output_quantity;
-        cin >> f.output;
-        f.is_solved = false;
-        formulas.push_back(f);
+      std::string input;
+      double input_quantity;
+      std::cin >> input;
+      std::cin >> input_quantity;
+      f.inputs.push_back(input);
+      f.inputs_quantity.push_back(input_quantity);
     }
-    int t;
-    cin >> t;
-    for (int i = 0; i < t; i++)
-    {
-        Tank tank;
-        cin >> tank.name;
-        cin >> tank.quantity;
-        tank.quantity_left = tank.quantity;
-        tank.is_solved = false;
-        tanks.push_back(tank);
-    }
-    float a;
-    cin >> a;
-    Solve(formulas[0], a);
-    for (int i = 0; i < tanks.size(); i++)
-    {
-        cout << tanks[i].name << " " << tanks[i].quantity - tanks[i].quantity_left << endl;
-    }
-    return 0;
+    std::cin >> f.output_quantity;
+    std::cin >> f.output;
+    f.is_solved = false;
+    formulas.push_back(f);
+  }
+  int t;
+  std::cin >> t;
+  for (int i = 0; i < t; i++)
+  {
+    Tank tank(0,"/");
+    std::cin >> tank.capacity;
+    tank.formula["/"] = 100;
+    tanks.push_back(tank);
+  }
+  double a;
+  std::cin >> a;
+  Solve(formulas[0], a);
+  for (int i = 0; i < tanks.size(); i++)
+  {
+    std::cout << tanks[i].capacity << " " << tanks[i].formula["/"] << std::endl;
+  }
+  return 0;
 }

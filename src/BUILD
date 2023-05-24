@@ -14,6 +14,15 @@ cc_library(
 
 cc_library(
   name = "tank",
-  srcs = ["tank.cc"],
   hdrs = ["include/tank.h"],
+)
+
+cc_library(
+  name = "algorithm",
+  srcs = ["algorithm.cc"],
+  hdrs = ["include/algorithm.h"],
+  deps = [
+    ":tank",
+    ":sebastien",
+  ]
 )
