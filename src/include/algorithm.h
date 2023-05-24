@@ -5,12 +5,6 @@
 #include <iostream>
 #include <string>
 
-struct Result
-{
-  std::map<std::string,Tank*> tanks;
-  std::map<std::string,double> formula;
-};
-
 struct Formula
 {
     std::string name;
@@ -29,6 +23,13 @@ struct Tank
     float quantity_left;
     bool is_solved;
 };
+
+struct Result
+{
+  std::map<std::string,Tank*> tanks;
+  std::map<std::string,double> formula;
+};
+
 
 std::vector<Formula> formulas;
 std::vector<Tank> tanks;
