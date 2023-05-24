@@ -1,6 +1,6 @@
 # Messages.md
 
-This file contains all the messages sent to the client and his answers, for anonymity reasons we will refer to the client as "Client" and to the team as "Group 8".
+This file contains all the messages sent to the client and his answers, for privacy reasons we will refer to the client as "Client" and to the team as "Group 8".
 
 Group 8
   14 h 15
