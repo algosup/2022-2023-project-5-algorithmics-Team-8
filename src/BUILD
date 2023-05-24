@@ -18,11 +18,17 @@ cc_library(
 )
 
 cc_library(
+  name = "algo",
+  hdrs = ["include/algorithm.h"],
+  deps = [":tank"],
+)
+
+cc_binary(
   name = "algorithm",
   srcs = ["algorithm.cc"],
-  hdrs = ["include/algorithm.h"],
   deps = [
     ":tank",
     ":sebastien",
-  ]
+    ":algo",
+  ],
 )
