@@ -18,11 +18,5 @@ struct Formula
   bool is_solved;
 };
 
-struct Result
-{
-  std::map<std::string,Tank*> tanks;
-  std::map<std::string,double> formula;
-};
-
 std::vector<Formula> formulas;
 std::vector<Tank> tanks;
