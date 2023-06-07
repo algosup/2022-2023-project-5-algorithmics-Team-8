@@ -41,7 +41,7 @@ Result configparser(std::string filepath)
 // Total => single value on line
 // Formula => 2 values on line
 // Tank => 3 values on line
-void readline(std::string line, std::map<std::string, Tank *> &tanks, std::map<std::string, double> &formula, double &total)
+void readline(std::string line, std::map<std::string, Tank *> &tanks, std::map<std::string, double> &formulas, double &total)
 {
   std::string separator = ";";
   size_t pos = 0;
@@ -71,7 +71,7 @@ void readline(std::string line, std::map<std::string, Tank *> &tanks, std::map<s
   }
   case 65 ... 122:
   {
-    formula[token.substr(0, token.find(separator))] = std::stod(token.substr(token.find(separator) + 1, token.length()));
+    formulas[token.substr(0, token.find(separator))] = std::stod(token.substr(token.find(separator) + 1, token.length()));
     // formula[tokens[0]] = std::stod(tokens[1].substr(0, tokens[1].length() - 1));
     break;
   }
@@ -81,7 +81,7 @@ void readline(std::string line, std::map<std::string, Tank *> &tanks, std::map<s
     // std::cout << std::stod(token.substr(token.find(separator) + 1, token.find_last_of(separator) + 1)) << std::endl;
     // std::cout << token.substr(token.find_last_of(separator) + 1, token.length()) << std::endl;
 
-    Tank *tank = new Tank(std::stod(token.substr(token.find(separator) + 1, token.length())), token.substr(token.find_last_of(separator) + 1, token.length()));
+    Tank *tank = new Tank(token.substr(0, token.find(separator)) , std::stod(token.substr(token.find(separator) + 1, token.length())), token.substr(token.find_last_of(separator) + 1, token.length()));
     tanks[token.substr(1, token.find(separator))] = tank;
     break;
   }

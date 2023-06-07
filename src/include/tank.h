@@ -5,14 +5,15 @@
 
 struct Tank
 {
+  std::string ID;
   double capacity;
-  std::map<std::string,double> formula;
+  std::string content;
 
 
-  Tank(double size, std::string content)
+  Tank(std::string Id, double size, std::string wine)
   {
+    ID = Id;
     capacity = size;
-    if (content != "/") return;
-    formula[content] =100;
+    content = wine;
   }
 };

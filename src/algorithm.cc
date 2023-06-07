@@ -13,16 +13,20 @@
 #include "include/sebastien.h"
 
 
-void Find_Tank(double amount)
+std::map<std::string, Tank *> *used_tanks = new std::map<std::string, Tank *>();
+
+std::string Find_Tank(double amount)
 {
   for (int i = 0; i < tanks.size(); i++)
   {
-    if (tanks[i].capacity == amount)
+    //std::cout << tanks[i].content << " " << tanks[i].content.find("/") <<  " " <<  (tanks[i].content.find("/") != std::string::npos) << std::endl;
+    if (tanks[i].capacity == amount && tanks[i].content.find("/") != std::string::npos)
     {
-      tanks[i].formula["/"] = 100;
-      return;
+      used_tanks->insert(tanks[i].content, tanks[i].ID);
+      return tanks[i].ID;
     }
   }
+  return "No tank found";
 }
 
 std::vector<Formula> Split_Formula(Formula F)
@@ -43,7 +47,7 @@ std::vector<Formula> Split_Formula(Formula F)
 
 void Solve(Formula F, double a)
 {
-  Find_Tank(a);
+
   std::vector<Formula> formulas = Split_Formula(F);
   for (int i = 0; i < formulas.size(); i++)
   {
@@ -89,6 +93,10 @@ int main(int argc, char *argv[])
     tanks.push_back(*it->second);
   }
 
+  for (auto it = formula->begin(); it != formula->end(); ++it){
+    it->second = it->second*(*total)/100;
+  }
+
   // formulas = std::vector<Formula>(formula->size());
   for (auto it = formula->begin(); it != formula->end(); ++it)
   {
@@ -96,47 +104,9 @@ int main(int argc, char *argv[])
     f.name = it->first;
     f.output = it->second;
     formulas.push_back(f);
+    std::cout << it->second << Find_Tank(it->second) << std::endl;
   }
-
-
-
-  int n = formulas.size();
-  for (int i = 0; i < n; i++)
-  {
-    Formula f;
-    f.name = formulas[i].name;
-    f.quantity = formulas[i].quantity;
-    // int m = tanks.size(); this is false but since wtf then let's assume it is
-    int m = tanks.size();
-    for (int j = 0; j < m; j++)
-    {
-      std::string input = tanks[j].formula.begin()->first;
-      double input_quantity = tanks[j].formula.begin()->second;
-      // std::cin >> input;
-      //! WTF std::cin >> input_quantity;
-      f.inputs.push_back(input);
-      f.inputs_quantity.push_back(input_quantity);
-    }
-    f.output_quantity = formulas[i].output_quantity;
-    f.output = formulas[i].output;
-    f.is_solved = false;
-    formulas.push_back(f);
-  }
-  int t = tanks.size();
-  for (int i = 0; i < t; i++)
-  {
-    Tank tank(0,"/");
-    tank.capacity = tanks[i].capacity;
-    tank.formula["/"] = 100;
-    tanks.push_back(tank);
-  }
-  double a = *total; // ????????
-  Solve(formulas[0], a);
-  for (int i = 0; i < tanks.size(); i++)
-  {
-    // std::cout << tanks[i].capacity << " " << tanks[i].formula.begin()->first << " " << tanks[i].formula.begin()->second << std::endl; formatted to get lisible strings and numbers formated to 2 decimals
-    std::cout << std::fixed << std::setprecision(2) << tanks[i].capacity << " " << tanks[i].formula.begin()->first << " " << tanks[i].formula.begin()->second << std::endl;
-  }
+  
 
   return 0;
 }
