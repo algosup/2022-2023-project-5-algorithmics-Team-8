@@ -1,0 +1,44 @@
+Chardonnay: Transfer from Tank 3 to Tank 152
+Chardonnay: Transfer from Tank 3 to Tank 233
+Chardonnay: Transfer from Tank 3 to Tank 81
+Chardonnay: Transfer from Tank 3 to Tank 118
+Chardonnay: Transfer from Tank 3 to Tank 197
+Chardonnay: Transfer from Tank 3 to Tank 201
+Chardonnay: Transfer from Tank 3 to Tank 135
+Chardonnay: Transfer from Tank 3 to Tank 141
+Chardonnay: Transfer from Tank 3 to Tank 172
+Chardonnay: Transfer from Tank 3 to Tank 92
+Chardonnay: Transfer from Tank 3 to Tank 67
+Chardonnay: Transfer from Tank 3 to Tank 230
+Chardonnay: Transfer from Tank 3 to Tank 55
+Chardonnay: Transfer from Tank 3 to Tank 101
+Chardonnay: Transfer from Tank 3 to Tank 126
+Chardonnay: Transfer from Tank 3 to Tank 125
+Chardonnay: Transfer from Tank 3 to Tank 193
+Chardonnay: Transfer from Tank 3 to Tank 127
+Chardonnay: Transfer from Tank 3 to Tank 60
+Chardonnay: Transfer from Tank 3 to Tank 39
+Chardonnay: Transfer from Tank 3 to Tank 138
+Chardonnay: Transfer from Tank 3 to Tank 88
+Chardonnay: Transfer from Tank 3 to Tank 124
+Chardonnay: Transfer from Tank 3 to Tank 146
+Merlot: Transfer from Tank 2 to Tank 239
+Merlot: Transfer from Tank 2 to Tank 99
+Merlot: Transfer from Tank 2 to Tank 83
+Merlot: Transfer from Tank 2 to Tank 216
+Merlot: Transfer from Tank 2 to Tank 55
+Merlot: Transfer from Tank 2 to Tank 163
+Merlot: Transfer from Tank 2 to Tank 201
+Merlot: Transfer from Tank 2 to Tank 117
+Merlot: Transfer from Tank 2 to Tank 63
+Merlot: Transfer from Tank 2 to Tank 109
+Merlot: Transfer from Tank 2 to Tank 52
+Merlot: Transfer from Tank 2 to Tank 191
+Merlot: Transfer from Tank 2 to Tank 25
+Pinot Noir: Transfer from Tank 4 to Tank 164
+Pinot Noir: Transfer from Tank 4 to Tank 158
+Pinot Noir: Transfer from Tank 4 to Tank 133
+Pinot Noir: Transfer from Tank 4 to Tank 149
+Pinot Noir: Transfer from Tank 4 to Tank 200
+Pinot Noir: Transfer from Tank 4 to Tank 150
+Pinot Noir: Transfer from Tank 4 to Tank 39
