@@ -5,7 +5,7 @@
 # <div align="center">Technical Specifications</div>
 
 <div align="right">Created on: 05/05/2023</div>
-<div align="right">Last updated on: 23/05/2023</div>
+<div align="right">Last updated on: 20/06/2023</div>
 
 <details>
 <summary>Table of Content</summary>
@@ -27,16 +27,13 @@
 	- [Security Considerations](#security-considerations)
 	- [Privacy Considerations](#privacy-considerations)
 	- [Accessibility Considerations](#accessiblity-considerations)
-	- [Operational Considerations](#operational-considerations)
 	- [Risks](#risks)
 - [Success Evaluation](#success-eveluation)
 - [Work](#work)
-	- [Work Estimate And Timelines](#work-estimates-and-timelines)
 	- [Prioritization](#prioritization)
 	- [Milestones](#milestones)
 - [End Matter](#end-matter)
 	- [References](#references)
-	- [Acknoledgements](#acknowledgments)
 	- [Glossary](#glossary)
 
 </details>
@@ -117,7 +114,7 @@ To learn how to use Bazel with c++, you can follow this [tutorial](https://bazel
 
 #### **Architecture design**
 
-![architecture_design](/Documents/Image/Architecture_Design.png)
+![architecture_design](/Documents/Image/Architecture_Diagram.png)
 
 #### **Environment**
 
@@ -170,10 +167,6 @@ Output:
 ### *Test Plan*
 
 The tests will be executed as described in the [test plan](/Documents/test_plan.md).
-
-### *Release And Deployment Plan*
-
-`To define`
 
 ### *Alternate Design*
 
@@ -239,17 +232,15 @@ The software won't contain any personal data, as it is just a calculator.
 
 The software will come with documents describing the required process to use it. Those documents will be made with accessibilty in mind in order for anyone to be able to use the software.
 
-### *Operational considerations*
-
-`To define`
-
 ### *Risks*
 
 The risks evaluated by the team are the following:
 - The software won't work because of either:
 	- The hardware not being powerful enought
 	- A major / critical bug preventing the software from working correctly
-- `Work in Progress`
+- Users can't use the software because:
+	- The software isn't documented as it sould be
+	- The software isn't work as expected
 
 ## **Success Eveluation**
 
@@ -257,13 +248,10 @@ Metrics:
 
 - Error margin regarding the output formula(-s)
 - Time of execution on minimum required hardware
-- `Work in Progress`
+- Usability (run test session with users and evaluate how easy to use and readable the software is)
+- Losses regarding remaining wines after the blend
 
 ## **Work**
-
-### *Work estimates and timelines*
-
-`To define`
 
 ### *Prioritization*
 
@@ -293,12 +281,12 @@ To go further:
 - [Test plan](/Documents/test_plan.md)
 - [Bazel](https://bazel.build/)
 
-`To define`
-
-### *Acknowledgments*
-
-`To define`
-
 ### *Glossary*
 
-`To fill`
+- **CPP**: C++ is a general-purpose programming language created by Bjarne Stroustrup as an extension of the C programming language, or "C with Classes". The language has expanded significantly over time, and modern C++ now has object-oriented, generic, and functional features in addition to facilities for low-level memory manipulation. It is almost always implemented as a compiled language, and many vendors provide C++ compilers, including the Free Software Foundation, LLVM, Microsoft, Intel, Oracle, and IBM, so it is available on many platforms.
+
+- **Bazel**: Bazel is a build system that is used to build C++ projects. It is similar to CMake, but it is more modern and it is easier to use.
+
+- **Google Test**: Google Test is a unit testing library for the C++ programming language, based on the xUnit architecture. The library is released under the BSD 3-clause license.
+
+- **Tank**: A tank is a large container for holding liquids or gases.
