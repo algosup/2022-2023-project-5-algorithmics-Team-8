@@ -1,0 +1,388 @@
+! <- this is a comment, line starting with ! are ignored
+! <- ceci est un commentaire, les lignes commençant par ! sont ignorées
+
+
+! EN
+! This is the config file for Sebastien, make a copy of it and follow the instructions to fill it out and
+! prepare the execution.
+! To run the program, drag your config file on the executable and wait for the program to finish, it will create
+! a file called "result.txt" in the same folder as the executable, this file contains the result of the program.
+! The inputs you enter should not have any unit or symbol, just the number
+! follow the examples below but don't add "ex:" or "!" in your inputs
+
+! FR
+! Ceci est le fichier de configuration pour Sebastien, faites une copie et suivez les instructions pour le remplir et
+! préparer l'exécution.
+! Pour lancer le programme, glissez votre fichier de configuration sur l'exécutable.
+! Attendez que le programme se termine, il créera un fichier appelé "result.txt" 
+! dans le même dossier que l'exécutable, ce fichier contient le résultat du programme.
+! Les entrées que vous entrez ne doivent pas avoir d'unité ou de symbole, uniquement le nombre
+! suivez les exemples ci-dessous mais n'ajoutez pas "ex:" ou "!" dans vos entrées
+
+
+
+
+! Total (hL), the total amount of wine you want to make, this is an upperbound
+! Total (hL), la quantité totale de vin que vous voulez faire, c'est une borne supérieure
+
+! ex: 200
+
+100
+
+! Wines and their proportions need to be positive(%)  in mix 
+! Name; percentage
+! Vins et leur proportions qui ont besoin d'être positive(%) dans le mélange final
+! Nom; pourcentage
+
+! ex: Chardonnay; 80
+
+
+Chardonnay;50
+Pinot noir;29
+Pinot meunier;21
+
+
+
+
+
+
+
+! Tanks; capacities and wines contained
+! Tank ID (#number); capacity (hL); wine contained ('/' = empty)
+! Cuves; capacités et vins contenus
+! ID de la cuve (nombre); capacité (hL); vin contenu ('/' = vide)
+
+
+! ex: #12; 300; Chardonnay
+! ex2: #A3ER; 34.5; /
+
+#1;200;Chardonnay
+#2;480;Pinot noir
+#3;540;Pinot meunier
+#4;500;/
+#5;900;Pinot noir
+#6;600;Chardonnay
+#7;600;/
+#8;800;Chardonnay
+#9;300;/
+#10;400;Chardonnay
+#11;400;Pinot meunier
+#12;300;/
+#13;540;/
+#14;260;/
+#15;120;/
+#16;350;champagne
+#17;400;/
+#18;600;Chardonnay
+#19;740;/
+#20;639;/
+#21;802;/
+#22;74;/
+#23;670;/
+#24;801;Chardonnay
+#25;486;/
+#26;274;/
+#27;173;/
+#28;629;Pinot meunier
+#29;189;/
+#30;129;/
+#31;997;Pinot noir
+#32;251;/
+#33;305;Chardonnay
+#34;79;/
+#35;923;Chardonnay
+#36;64;/
+#37;378;/
+#38;205;/
+#39;910;Pinot noir
+#40;858;/
+#41;919;/
+#42;525;Chardonnay
+#43;152;/
+#44;676;Pinot meunier
+#45;363;Pinot meunier
+#46;900;/
+#47;56;/
+#48;177;/
+#49;174;/
+#50;690;Pinot noir
+#51;183;/
+#52;848;Chardonnay
+#53;975;/
+#54;694;Pinot meunier
+#55;756;/
+#56;510;Pinot noir
+#57;10;/
+#58;915;/
+#59;443;/
+#60;162;/
+#61;664;/
+#62;358;/
+#63;957;/
+#64;361;/
+#65;672;/
+#66;59;/
+#67;161;/
+#68;19;/
+#69;983;/
+#70;716;/
+#71;775;/
+#72;165;/
+#73;974;Chardonnay
+#74;721;/
+#75;875;/
+#76;954;/
+#77;303;/
+#78;109;/
+#79;103;/
+#80;26;/
+#81;915;Chardonnay
+#82;820;/
+#83;794;/
+#84;509;/
+#85;492;/
+#86;817;/
+#87;986;/
+#88;347;/
+#89;167;/
+#90;395;/
+#91;62;/
+#92;426;/
+#93;586;/
+#94;391;/
+#95;831;/
+#96;707;/
+#97;797;/
+#98;244;/
+#99;467;/
+#100;489;/
+#101;97;/
+#102;434;/
+#103;340;/
+#104;273;/
+#105;407;/
+#106;900;/
+#107;152;/
+#108;691;/
+#109;440;/
+#110;751;/
+#111;377;/
+#112;83;/
+#113;918;/
+#114;41;/
+#115;28;/
+#116;343;/
+#117;101;/
+#118;652;/
+#119;897;/
+#120;776;/
+#121;352;/
+#122;800;/
+#123;342;/
+#124;571;/
+#125;228;/
+#126;811;/
+#127;496;/
+#128;765;/
+#129;999;/
+#130;911;/
+#131;12;/
+#132;766;/
+#133;31;/
+#134;165;/
+#135;73;/
+#136;673;/
+#137;359;/
+#138;525;/
+#139;17;/
+#140;320;/
+#141;931;/
+#142;451;/
+#143;846;/
+#144;466;/
+#145;771;/
+#146;652;/
+#147;605;/
+#148;970;/
+#149;954;/
+#150;157;/
+#151;9;/
+#152;117;/
+#153;29;/
+#154;172;/
+#155;9;/
+#156;6;/
+#157;161;/
+#158;26;/
+#159;8;/
+#160;6;/
+#161;18;/
+#162;5;/
+#163;5;/
+#164;549;/
+#165;882;/
+#166;244;/
+#167;150;/
+#168;850;/
+#169;643;/
+#170;652;/
+#171;965;/
+#172;766;/
+#173;34;/
+#174;419;/
+#175;153;/
+#176;391;/
+#177;753;/
+#178;569;/
+#179;127;/
+#180;948;/
+#181;833;/
+#182;540;/
+#183;955;/
+#184;326;/
+#185;107;/
+#186;658;/
+#187;920;/
+#188;344;/
+#189;185;/
+#190;753;/
+#191;634;/
+#192;967;/
+#193;564;/
+#194;596;/
+#195;509;/
+#196;563;Pinot noir
+#197;323;Pinot meunier
+#198;464;/
+#199;826;/
+#200;155;/
+#201;207;/
+#202;145;/
+#203;962;Pinot noir
+#204;70;/
+#205;859;/
+#206;962;/
+#207;877;/
+#208;94;/
+#209;949;/
+#210;665;/
+#211;629;/
+#212;728;/
+#213;28;/
+#214;60;/
+#215;737;/
+#216;191;/
+#217;340;/
+#218;339;/
+#219;319;/
+#220;653;/
+#221;496;/
+#222;19;/
+#223;848;Pinot noir
+#224;712;Pinot meunier
+#225;333;/
+#226;496;/
+#227;588;/
+#228;237;/
+#229;941;/
+#230;671;/
+#231;845;/
+#232;839;/
+#233;282;/
+#234;541;/
+#235;149;/
+#236;557;/
+#237;178;/
+#238;44;/
+#239;712;/
+#240;414;/
+#241;721;/
+#242;436;/
+#243;1000;/
+#244;52;/
+#245;841;/
+#246;949;/
+#247;161;/
+#248;421;/
+#249;864;/
+#250;177;/
+#251;96;/
+#252;844;/
+#253;719;/
+#254;44;Chardonnay
+#255;538;/
+#256;945;/
+#257;126;/
+#258;234;/
+#259;118;Chardonnay
+#260;258;/
+#261;341;/
+#262;820;/
+#263;892;/
+#264;591;/
+#265;896;/
+#266;155;/
+#267;203;/
+#268;451;/
+#269;145;/
+#270;59;Chardonnay
+#271;10;/
+#272;816;/
+#273;438;/
+#274;274;/
+#275;582;/
+#276;936;/
+#277;721;/
+#278;5;/
+#279;663;/
+#280;177;/
+#281;105;/
+#282;933;/
+#283;89;/
+#284;638;/
+#285;206;/
+#286;550;/
+#287;256;/
+#288;121;/
+#289;657;/
+#290;75;/
+#291;660;/
+#292;179;/
+#293;805;/
+#294;221;/
+#295;833;/
+#296;192;/
+#297;137;/
+#298;625;/
+#299;396;/
+#300;854;/
+#301;799;/
+#302;853;/
+#303;7;/
+#304;574;/
+#305;736;/
+#306;378;/
+#307;179;/
+#308;11;/
+#309;913;/
+#310;942;/
+#311;219;/
+#312;620;/
+#313;388;/
+#314;62;/
+#315;180;/
+#316;371;/
+#317;840;/
+#318;456;/
+#319;731;/
+#320;690;/
+#321;931;/
+#322;625;/
+#323;763;/
+#324;946;/
+#325;968;/
+#326;954;/
+#327;736;/
+#328;404;/
+#329;406;/
+#330;995;/
