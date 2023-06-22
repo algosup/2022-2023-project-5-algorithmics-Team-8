@@ -411,7 +411,7 @@ func parseconfig(filepath string) Node {
 
 		line := scanner.Text()
 
-		if line == "" || line[0] == '!' || line[0] == '\r' { //Line is a comment so ignore it while parsing
+		if strings.TrimSpace(line) == "" || line[0] == '!' || line[0] == '\r' { //Line is a comment so ignore it while parsing
 			continue
 		}
 
@@ -422,7 +422,7 @@ func parseconfig(filepath string) Node {
 		case 1: // Case Desired Quantity
 			quantity, err := strconv.Atoi(tokens[0])
 			if err != nil {
-				log.Fatal("abc")
+				log.Fatal("abc is to crash at quantity")
 				os.Exit(1)
 			}
 
