@@ -2,8 +2,8 @@ package main
 
 import (
 	"bufio"
-	"encoding/csv"
 	"fmt"
+	"log"
 	"os"
 	"sort"
 	"strconv"
@@ -12,9 +12,9 @@ import (
 )
 
 type Action struct {
-	Name         string
-	Transmitters []Tank
-	Receivers    []Tank
+	Name string
+	from []Tank
+	to   []Tank
 }
 
 type Tank struct {
@@ -27,7 +27,6 @@ type TanksState struct {
 	usedTanks  []Tank
 	emptyTanks []Tank
 }
-
 type Node struct {
 	State          TanksState
 	Transformation Action
@@ -37,13 +36,13 @@ type Node struct {
 }
 
 var formula map[string]float64 = make(map[string]float64)
-var total float64
+var formula2 map[string]float64 = make(map[string]float64)
+var total float64 = 0
+var solverTanksQ map[string]bool = make(map[string]bool)
+var solverTanksID []Tank
 
 func main() {
 	var instructions []string
-
-	var rootNode Node
-	var emptySmallest float64 = 0
 
 	if len(os.Args) < 2 {
 		println("please provide path to file")
@@ -51,117 +50,15 @@ func main() {
 	}
 	path := os.Args[1]
 
-	fmt.Println("\n---- HI, Please give the total Hl you want as a result ----")
-	var tempTTL string
-	// Taking input from user
-	fmt.Scanln(&tempTTL)
-
-	totalt, err := strconv.ParseFloat(tempTTL, 64)
-	if err != nil {
-		println(err.Error())
-		return
-	}
-	total = totalt
-
-	fmt.Println("\n Please enter the wine and its quantity (%) separated by a space (ex : Chardonnay 80)")
-	fmt.Println("If you write the same wine name twice (uppercase = lowercase), the first input will be overridden")
-	fmt.Println("if quantity is not equal to 100% after you are done, the program will Exit")
-	fmt.Println("WRITE the word 'done' when you are finished")
-	println()
-
-	buffQuantity := 0.0
-	inputF := bufio.NewReader(os.Stdin)
-	//will Exit only on "done" written
-	for {
-		inputF, err := inputF.ReadString('\n')
-		if err != nil {
-			println("error reading terminal, verify your authorizations")
-			return
+	var rootNode Node = parseconfig(path)
+	var emptySmallest float64 = -1
+	for _, v := range rootNode.State.emptyTanks {
+		if v.Capacity < emptySmallest {
+			emptySmallest = v.Capacity
 		}
-
-		inputF = strings.TrimSpace(inputF)
-		if inputF == "done" {
-			break
-		} else {
-			fullInput := strings.Split(inputF, " ")
-			if len(fullInput) < 2 {
-				fmt.Println("there is not enough arguments, 2 are needed !")
-			} else {
-				convVal, err := strconv.ParseFloat(fullInput[1], 64)
-				if err != nil {
-					fmt.Println("your second value is not a number, please try again.")
-				} else {
-					quantity := float64(total) * convVal / 100
-					fmt.Println("Quantity: ", quantity, "/", total)
-
-					formula[strings.ToLower(fullInput[0])] = quantity
-					buffQuantity += convVal
-				}
-			}
-		}
-		fmt.Println("\n---- type your next value ----")
-	}
-	if buffQuantity != 100 {
-		println("quantity is not 100% in formula")
-		return
 	}
 
 	start := time.Now()
-
-	file, err := os.Open(path)
-	if err != nil {
-		println(err.Error())
-		return
-	}
-
-	defer file.Close()
-
-	csvReader := csv.NewReader(file)
-	records, err := csvReader.ReadAll()
-	if err != nil {
-		println(err.Error())
-		return
-	}
-
-	if len(records) < 1 {
-		println("there is no tank")
-		return
-	}
-
-	var detectQuantity map[string]float64 = make(map[string]float64)
-	for key, value := range formula {
-		detectQuantity[key] = value
-	}
-
-	for _, record := range records {
-		rec := strings.Split(record[0], ";")
-		rec[2] = strings.TrimSpace(strings.ToLower(rec[2]))
-		cast, err := strconv.ParseFloat(strings.TrimSpace(rec[1]), 64)
-		if err != nil {
-			println("wrong format")
-			return
-		}
-
-		if strings.Contains(rec[2], "/") {
-			if emptySmallest == 0 || emptySmallest > cast {
-				emptySmallest = cast
-			}
-			rootNode.State.emptyTanks = append(rootNode.State.emptyTanks, Tank{rec[0], make(map[string]float64), cast})
-		} else {
-			rootNode.State.usedTanks = append(rootNode.State.usedTanks, Tank{rec[0], map[string]float64{rec[2]: cast}, cast})
-			if detectQuantity[rec[2]] != 0 {
-				detectQuantity[rec[2]] -= cast
-			}
-		}
-	}
-
-	//Obligatory error
-	for key, d := range detectQuantity {
-		if d > 0 {
-			println("Not enough of wine " + key)
-			return
-		}
-	}
 
 	if len(rootNode.State.emptyTanks) == 0 {
 		println("Not enough empty tanks to attempt finding a solution")
@@ -175,12 +72,28 @@ func main() {
 
 	//conditional possibility
 	if len(rootNode.State.emptyTanks) == 1 {
-		for key, _ := range rootNode.State.emptyTanks {
-			txt := fmt.Sprintf("There is 1 empty tank %vhL for a formula total of %vhL, we can only make do with the existing one ", key, total)
+		for _, key := range rootNode.State.emptyTanks {
+			txt := fmt.Sprintf("There is 1 empty tank %vhL for a formula total of %vhL, we can only make do with the existing one ", key.Capacity, total)
 			instructions = append(instructions, txt)
 		}
 	}
 
+	sort.SliceStable(rootNode.State.emptyTanks, func(i, j int) bool {
+		return rootNode.State.emptyTanks[i].Capacity < rootNode.State.emptyTanks[j].Capacity
+	})
+
+	sort.SliceStable(rootNode.State.usedTanks, func(i, j int) bool {
+		return rootNode.State.usedTanks[i].Capacity < rootNode.State.usedTanks[j].Capacity
+	})
+
+	search, found := findTanks(rootNode.State.emptyTanks, total)
+	if !found {
+		println("no solution possible because of wrong add up")
+	}
+	for _, se := range search {
+		solverTanksQ[rootNode.State.emptyTanks[se].ID] = true
+		solverTanksID = append(solverTanksID, rootNode.State.emptyTanks[se])
+	}
 	//now the algorithm
 	result, err := Solve(formula, total, rootNode, instructions)
 	if err != nil {
@@ -193,23 +106,82 @@ func main() {
 	for _, instruction := range result {
 		fmt.Println(instruction)
 	}
+	println("\nFinal tanks are :")
+	for _, info := range solverTanksID {
+		fmt.Println(info.ID)
+	}
 }
 
 func findTanks(tanks []Tank, quantity float64) ([]int, bool) {
-	var indices []int
-	var sum float64
 
-	for i, tank := range tanks {
-		if sum+tank.Capacity <= quantity {
-			sum += tank.Capacity
-			indices = append(indices, i)
-
-			if sum == quantity {
-				return indices, true
-			}
+	for i := len(tanks) - 1; i >= 0; i-- {
+		if solverTanksQ[tanks[i].ID] || tanks[i].Capacity > quantity {
+			continue
+		} else if tanks[i].Capacity == quantity {
+			return []int{i}, true
 		}
 	}
+	for i := len(tanks) - 1; i >= 0; i-- {
+		if solverTanksQ[tanks[i].ID] || tanks[i].Capacity > quantity {
+			continue
+		}
+		tks, found := findTanksRec(tanks[:i], quantity, tanks[i].Capacity, []int{i})
+		if found {
+			tks = append(tks, i)
+			return tks, true
+		}
+	}
+	return nil, false
+}
 
+func findTanksRec(tanks []Tank, searchedQ float64, quantity float64, ids []int) ([]int, bool) {
+	var indices []int
+	var sum float64
+	for j, tank := range tanks {
+		if solverTanksQ[tanks[j].ID] {
+			continue
+		}
+		// println(sum, searchedQ, searchedQ == sum)
+		if j >= ids[0] {
+			return nil, false
+		}
+		for id := range ids {
+			if j == id {
+				continue
+			}
+		}
+
+		sum = quantity + tank.Capacity
+		ids = append(ids, j)
+		if searchedQ > sum {
+			indices, found := findTanksRec(tanks[j:], searchedQ, sum, ids)
+			if found {
+				var realInd []int
+				for r := range realInd {
+					realInd[r] += j
+				}
+
+				return indices, true
+			} else if searchedQ == sum {
+				var realInd []int
+				for r := range realInd {
+					realInd[r] += j
+				}
+				return indices, true
+			} else {
+				if len(ids) > 2 {
+					ids = ids[:len(ids)-2]
+				} else {
+					ids = []int{ids[0]}
+				}
+			}
+		} else if searchedQ == sum {
+			indices = append(indices, j)
+			return indices, true
+		} else {
+			continue
+		}
+	}
 	return nil, false
 }
 
@@ -230,7 +202,6 @@ func Solve(formula map[string]float64, total float64, currentNode Node, instruct
 	if len(currentNode.State.emptyTanks) == 0 {
 		return instructions, nil
 	}
-
 	bestChildNode := &Node{
 		State:          TanksState{},
 		Transformation: Action{},
@@ -238,124 +209,165 @@ func Solve(formula map[string]float64, total float64, currentNode Node, instruct
 		Parent:         &currentNode,
 		Children:       []*Node{},
 	}
-
 	for i := 0; i < len(currentNode.State.usedTanks); i++ {
-		transmitter := currentNode.State.usedTanks[i]
-
-		for j := 0; j < len(currentNode.State.emptyTanks); j++ {
-			receiver := currentNode.State.emptyTanks[j]
-
-			// Check if transmitter's quantity is equal to the content of a group of tanks
-			receiverIndices, found := findTanks(currentNode.State.emptyTanks, transmitter.Capacity)
-			if found {
-				newStateDivide := TanksState{
-					usedTanks:  make([]Tank, len(currentNode.State.usedTanks)),
-					emptyTanks: make([]Tank, len(currentNode.State.emptyTanks)),
-				}
-				copy(newStateDivide.usedTanks, currentNode.State.usedTanks)
-				copy(newStateDivide.emptyTanks, currentNode.State.emptyTanks)
-
-				// Remove transmitter from used tanks and add it to empty tanks
-				newStateDivide.usedTanks = append(newStateDivide.usedTanks[:i], newStateDivide.usedTanks[i+1:]...)
-
-				// Remove receiver tanks from empty tanks and add them to used tanks
-				for _, index := range receiverIndices {
-					newStateDivide.usedTanks = append(newStateDivide.usedTanks, newStateDivide.emptyTanks[index])
-				}
-				newStateDivide.emptyTanks = removeTanksByIndices(newStateDivide.emptyTanks, receiverIndices)
-
-				childNodeDivide := &Node{
-					State:          newStateDivide,
-					Transformation: Action{Name: "Divide", Transmitters: []Tank{transmitter}, Receivers: newStateDivide.usedTanks[i:]},
-					Parent:         &currentNode,
-					Children:       []*Node{},
-					Score:          0,
-				}
-
-				Rate(childNodeDivide.Transformation, &childNodeDivide.Score)
-
-				if childNodeDivide.Score > bestChildNode.Score {
-					bestChildNode = childNodeDivide
-				}
-
-				if childNodeDivide.Score >= 10 {
-					return instructions, nil
-				}
-			}
-
-			// Combine action
-			for k := 0; k < len(currentNode.State.emptyTanks); k++ {
-				if k == j {
-					continue
-				}
-				receiver2 := currentNode.State.emptyTanks[k]
-
-				newStateCombine := TanksState{
-					usedTanks:  make([]Tank, len(currentNode.State.usedTanks)),
-					emptyTanks: make([]Tank, len(currentNode.State.emptyTanks)),
-				}
-				copy(newStateCombine.usedTanks, currentNode.State.usedTanks)
-				copy(newStateCombine.emptyTanks, currentNode.State.emptyTanks)
-
-				// Remove transmitter and receiver from used tanks and add them to empty tanks
-				newStateCombine.usedTanks = append(newStateCombine.usedTanks[:i], newStateCombine.usedTanks[i+1:]...)
-
-				// Find the right group for transmitter and receiver
-				transmitterIndex, found := findTanks(newStateCombine.emptyTanks, transmitter.Capacity)
-				if found {
-					for t := range transmitterIndex {
-						if t > k {
-							newStateCombine.emptyTanks = append(newStateCombine.emptyTanks[:t], newStateCombine.emptyTanks[t+1:]...)
-							newStateCombine.emptyTanks = append(newStateCombine.emptyTanks[:k], append([]Tank{transmitter, receiver}, newStateCombine.emptyTanks[k:]...)...)
-						} else {
-							newStateCombine.emptyTanks = append(newStateCombine.emptyTanks[:k], append([]Tank{transmitter, receiver}, newStateCombine.emptyTanks[k:]...)...)
-							newStateCombine.emptyTanks = append(newStateCombine.emptyTanks[:t], newStateCombine.emptyTanks[t+1:]...)
-						}
-					}
-				} else {
-					newStateCombine.emptyTanks = append(newStateCombine.emptyTanks[:k], append([]Tank{receiver}, newStateCombine.emptyTanks[k:]...)...)
-					newStateCombine.emptyTanks = append(newStateCombine.emptyTanks[:j], append([]Tank{transmitter}, newStateCombine.emptyTanks[j:]...)...)
-				}
-
-				childNodeCombine := &Node{
-					State:          newStateCombine,
-					Transformation: Action{Name: "Combine", Transmitters: []Tank{transmitter, receiver}, Receivers: []Tank{receiver2}},
-					Parent:         &currentNode,
-					Children:       []*Node{},
-					Score:          0,
-				}
-
-				Rate(childNodeCombine.Transformation, &childNodeCombine.Score)
-
-				if childNodeCombine.Score > bestChildNode.Score {
-					bestChildNode = childNodeCombine
-				}
-
-				if childNodeCombine.Score >= 10 {
-					return instructions, nil
+		pass := false
+		quant := 0.
+		wineN := ""
+		for key, q := range formula {
+			for key2 := range currentNode.State.usedTanks[i].Wines {
+				if key2 == key && formula[key2] > 0 || key2 == key && formula2[key2] > 0 {
+					pass = true
+					quant = q
+					wineN = key2
 				}
 			}
 		}
-	}
+		if !pass {
+			continue
+		}
 
-	transmitters := ""
-	receivers := ""
-	for _, tank := range bestChildNode.Transformation.Transmitters {
-		transmitters += tank.ID + " "
-	}
-	for _, tank := range bestChildNode.Transformation.Receivers {
-		receivers += tank.ID + " "
-	}
-	instruction := fmt.Sprintf("%s: Transmitters: %s, Receivers: %s", bestChildNode.Transformation.Name, transmitters, receivers)
-	instructions = append(instructions, instruction)
+		actual := currentNode.State.usedTanks[i]
 
-	return Solve(formula, total, *bestChildNode, instructions)
+		// Check if actual's quantity is equal to the content of a group of tanks
+		receiverIndices, found := findTanks(currentNode.State.emptyTanks, quant)
+		restInTank := actual.Capacity - quant
+
+		found2 := false
+		var receiverIndices2 []int
+		if restInTank > 0 {
+			// Check if actual's quantity is equal to the content of a group of tanks
+			receiverIndices2, found2 = findTanks(currentNode.State.emptyTanks, actual.Capacity-quant)
+		} else {
+			found = true
+		}
+
+		if found && found2 {
+			var receivers []Tank
+			for _, receiver := range receiverIndices {
+				receivers = append(receivers, currentNode.State.emptyTanks[receiver])
+			}
+
+			for _, receiver := range receiverIndices2 {
+				receivers = append(receivers, currentNode.State.emptyTanks[receiver])
+			}
+
+			newStateDivide := TanksState{
+				usedTanks:  []Tank{},
+				emptyTanks: []Tank{},
+			}
+			newStateDivide.usedTanks = append(currentNode.State.usedTanks[:i], currentNode.State.usedTanks[i+1:]...)
+
+			allIndices := receiverIndices
+			allIndices = append(allIndices, receiverIndices2...)
+			newStateDivide.emptyTanks = removeTanksByIndices(currentNode.State.emptyTanks, allIndices)
+
+			for _, r := range receivers {
+				r.Wines[wineN] = r.Capacity
+				newStateDivide.usedTanks = append(newStateDivide.usedTanks, r)
+			}
+			newStateDivide.emptyTanks = append(newStateDivide.emptyTanks, actual)
+
+			childNodeDivide := &Node{
+				State:          newStateDivide,
+				Transformation: Action{Name: "Divide", from: []Tank{actual}, to: receivers},
+				Parent:         &currentNode,
+				Children:       []*Node{},
+				Score:          0,
+			}
+			Rate(childNodeDivide.Transformation, &childNodeDivide.Score)
+			formula2[wineN] = 0
+			bestChildNode = childNodeDivide
+		} else {
+			//add to found ttl tanks
+			// for tk := range cur
+			for k, tk := range solverTanksID {
+				countW := ""
+				for wn := range currentNode.State.usedTanks[i].Wines {
+					countW = wn
+				}
+				if currentNode.State.usedTanks[i].Wines[countW] < formula[countW] {
+					continue
+				}
+				try := tk.Capacity - formula[countW]
+				try2 := currentNode.State.usedTanks[i].Wines[countW] - formula[countW]
+				if try >= 0 {
+					getTk, success := findTanks(currentNode.State.emptyTanks, try2)
+					if success {
+						formula[wineN] -= try
+						for kley, wnes := range currentNode.State.usedTanks[i].Wines {
+							solverTanksID[k].Wines[kley] += wnes
+						}
+						solverTanksID[k].Capacity = try
+						var receivers []Tank
+						receivers = append(receivers, solverTanksID[k])
+						for _, receiver := range getTk {
+							receivers = append(receivers, currentNode.State.emptyTanks[receiver])
+						}
+
+						newStateDivide := TanksState{
+							usedTanks:  []Tank{},
+							emptyTanks: []Tank{},
+						}
+						newStateDivide.usedTanks = append(currentNode.State.usedTanks[:i], currentNode.State.usedTanks[i+1:]...)
+
+						newStateDivide.emptyTanks = removeTanksByIndices(currentNode.State.emptyTanks, getTk)
+
+						for _, r := range receivers {
+							r.Wines[wineN] = r.Capacity
+							newStateDivide.usedTanks = append(newStateDivide.usedTanks, r)
+						}
+
+						childNodeDivide := &Node{
+							State:          newStateDivide,
+							Transformation: Action{Name: "Divide To Final", from: []Tank{actual}, to: receivers},
+							Parent:         &currentNode,
+							Children:       []*Node{},
+							Score:          0,
+						}
+						Rate(childNodeDivide.Transformation, &childNodeDivide.Score)
+						formula2[wineN] = 0
+						bestChildNode = childNodeDivide
+						break
+					} else {
+						continue
+					}
+				}
+				//  else if try == 0 {
+
+				// 	println("EQUAL 0", wineN)
+				// }
+			}
+		}
+		if bestChildNode.Score == -1 {
+			continue
+		}
+		from := ""
+		receivers := ""
+		for _, tank := range bestChildNode.Transformation.from {
+			from += tank.ID + " "
+		}
+		for _, tank := range bestChildNode.Transformation.to {
+			receivers += tank.ID + " "
+		}
+		instruction := fmt.Sprintf("%s: from: %s, to: %s", bestChildNode.Transformation.Name, from, receivers)
+		instructions = append(instructions, instruction)
+
+		sort.SliceStable(bestChildNode.State.emptyTanks, func(i, j int) bool {
+			return bestChildNode.State.emptyTanks[i].Capacity < bestChildNode.State.emptyTanks[j].Capacity
+		})
+
+		sort.SliceStable(bestChildNode.State.usedTanks, func(i, j int) bool {
+			return bestChildNode.State.usedTanks[i].Capacity < bestChildNode.State.usedTanks[j].Capacity
+		})
+		return Solve(formula, total, *bestChildNode, instructions)
+	}
+	return instructions, nil
 }
 
 func Rate(act Action, score *float64) {
 	//mix of two wines is closer than random moving a wine
 	//right quantity of a wine in tank is closer than random moving a wine
-	for _, i := range act.Receivers {
+	for _, i := range act.to {
 		var buff float64 = 0
 		for j, k := range i.Wines {
 			if formula[j] > 0 {
@@ -380,4 +392,77 @@ func proposition(prop string) {
 		println("Abort mission!")
 		os.Exit(0)
 	}
+}
+
+func parseconfig(filepath string) Node {
+	var rootNode Node
+
+	file, err := os.Open(filepath)
+	if err != nil {
+		println(err.Error())
+		os.Exit(1)
+	}
+
+	defer file.Close()
+
+	scanner := bufio.NewScanner(file)
+
+	for scanner.Scan() {
+
+		line := scanner.Text()
+
+		if line == "" || line[0] == '!' || line[0] == '\r' { //Line is a comment so ignore it while parsing
+			continue
+		}
+
+		tokens := strings.Split(line, ";")
+
+		switch len(tokens) {
+
+		case 1: // Case Desired Quantity
+			quantity, err := strconv.Atoi(tokens[0])
+			if err != nil {
+				log.Fatal("abc")
+				os.Exit(1)
+			}
+
+			if total != 0 {
+				log.Fatal("Error: Desired quantity was defined more than once")
+				os.Exit(1)
+			}
+			total = float64(quantity)
+
+		case 2: //Case Wine ; Percentage
+			var wine string = strings.TrimSpace(tokens[0])
+
+			if formula[wine] != 0 {
+				log.Fatalf("Error: Duplicate wine name found: %s", wine)
+				os.Exit(1)
+			}
+
+			percentage, err := strconv.ParseFloat(tokens[1], 64)
+			if err != nil {
+				log.Fatalf("Error: Wine in fomula lacks percentage")
+				os.Exit(1)
+			}
+
+			formula[wine] = percentage
+
+			formula2[wine] = percentage
+
+		case 3: //Case TankID ; Capacity ; Content
+			tankID := tokens[0][1:]
+
+			capacity, _ := strconv.ParseFloat(tokens[1], 64)
+
+			content := strings.TrimSpace(tokens[2])
+
+			if content == "/" {
+				rootNode.State.emptyTanks = append(rootNode.State.emptyTanks, Tank{tankID, make(map[string]float64), capacity})
+			}
+			rootNode.State.usedTanks = append(rootNode.State.usedTanks, Tank{tankID, map[string]float64{content: capacity}, capacity})
+
+		}
+	}
+	return rootNode
 }
