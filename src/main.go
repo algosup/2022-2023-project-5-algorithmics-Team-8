@@ -114,15 +114,24 @@ func main() {
 		println(err.Error())
 		return
 	}
+
 	elapsed := time.Since(start)
-	fmt.Printf("page took %s", elapsed)
+	os.Create("output")
+	file, err := os.OpenFile("output", os.O_APPEND|os.O_WRONLY, 0)
+	if err != nil {
+		fmt.Println(err.Error())
+	}
+
+	timeTaken := fmt.Sprintf("sebastien took %s \n\n", elapsed)
+	file.WriteString(timeTaken)
 	println()
 	for _, instruction := range result {
 		fmt.Println(instruction)
+		file.WriteString(instruction + "\n")
 	}
-	println("\nFinal tanks are :")
+	file.WriteString("\nFinal tanks are :")
 	for _, info := range solverTanksID {
-		fmt.Println(info.ID)
+		file.WriteString(info.ID)
 	}
 }
 
