@@ -78,6 +78,20 @@ func main() {
 		}
 	}
 
+	for i := 0; i < len(rootNode.State.usedTanks); i++ {
+		exist := false
+		for wineN := range formula {
+			_, exist = rootNode.State.usedTanks[i].Wines[wineN]
+			if exist {
+				break
+			}
+		}
+		if !exist {
+			rootNode.State.usedTanks = append(rootNode.State.usedTanks[:i], rootNode.State.usedTanks[i+1:]...)
+			i--
+		}
+	}
+
 	sort.SliceStable(rootNode.State.emptyTanks, func(i, j int) bool {
 		return rootNode.State.emptyTanks[i].Capacity < rootNode.State.emptyTanks[j].Capacity
 	})
@@ -457,8 +471,9 @@ func parseconfig(filepath string) Node {
 
 			content := strings.TrimSpace(tokens[2])
 
-			if content == "/" {
+			if strings.Contains(content, "/") {
 				rootNode.State.emptyTanks = append(rootNode.State.emptyTanks, Tank{tankID, make(map[string]float64), capacity})
+				continue
 			}
 			rootNode.State.usedTanks = append(rootNode.State.usedTanks, Tank{tankID, map[string]float64{content: capacity}, capacity})
 
