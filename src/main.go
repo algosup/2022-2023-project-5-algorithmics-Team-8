@@ -116,8 +116,8 @@ func main() {
 	}
 
 	elapsed := time.Since(start)
-	os.Create("output")
-	file, err := os.OpenFile("output", os.O_APPEND|os.O_WRONLY, 0)
+	os.Create("Instructions.txt")
+	file, err := os.OpenFile("Instructions.txt", os.O_APPEND|os.O_WRONLY, 0)
 	if err != nil {
 		fmt.Println(err.Error())
 	}
