@@ -129,9 +129,9 @@ func main() {
 		fmt.Println(instruction)
 		file.WriteString(instruction + "\n")
 	}
-	file.WriteString("\nFinal tanks are :")
+	file.WriteString("\nFinal tanks are :\n")
 	for _, info := range solverTanksID {
-		file.WriteString(info.ID)
+		file.WriteString(info.ID + "\n")
 	}
 }
 
